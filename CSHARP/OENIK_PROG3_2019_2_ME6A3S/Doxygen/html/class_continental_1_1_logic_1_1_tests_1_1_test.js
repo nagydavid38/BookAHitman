@@ -1,0 +1,26 @@
+var class_continental_1_1_logic_1_1_tests_1_1_test =
+[
+    [ "SetupTests", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a0712d0ea96d27be172b2ef8957027cd0", null ],
+    [ "TestAllContracts", "class_continental_1_1_logic_1_1_tests_1_1_test.html#ae1a9a5dd25425df86dbb6d835ebeff2d", null ],
+    [ "TestCreateContract", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a12033490eee14821d65de871a1f2fef6", null ],
+    [ "TestCreateContract2", "class_continental_1_1_logic_1_1_tests_1_1_test.html#ae4ebe134caaea5e869968bccb18be977", null ],
+    [ "TestCreateHitman", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a98773d7172b24d7b2eeec4040feacae4", null ],
+    [ "TestCreateTarget", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a0e89e8eb1fbaa58deb2bd6c1640190e0", null ],
+    [ "TestCreateWish", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a239cf78a2dfe9da097cd7140ab0fce70", null ],
+    [ "TestDeleteContract", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a10923fa22f4448a3059962114e0ac5ef", null ],
+    [ "TestDeleteHitman", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a418ad6764b014dc1fb47b3ac60c5484b", null ],
+    [ "TestDeleteTarget", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a627d4702cd993af323aa587211de9715", null ],
+    [ "TestDeleteWish", "class_continental_1_1_logic_1_1_tests_1_1_test.html#abb1a40914fa0cfdb1662734fe8a6476e", null ],
+    [ "TestGetAllContracts", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a302a3280ac540197be50b448ef58f011", null ],
+    [ "TestGetAllHitmen", "class_continental_1_1_logic_1_1_tests_1_1_test.html#aee7882bb0d4c0407f895ddbb730c3709", null ],
+    [ "TestGetAllTargets", "class_continental_1_1_logic_1_1_tests_1_1_test.html#ada1ac8a712c8a4d803e2105fd1238dea", null ],
+    [ "TestGetAllWishes", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a82e691940ab64d7c4c804e85f137e7c0", null ],
+    [ "TestMostExpensive", "class_continental_1_1_logic_1_1_tests_1_1_test.html#acf4a18526721787b44cb00edbceb6ae8", null ],
+    [ "TestTheItalianJob", "class_continental_1_1_logic_1_1_tests_1_1_test.html#abe25eaacb211d76d9eae22b8f7bb4678", null ],
+    [ "TestUpdateHitmanBasicPrice", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a35f72234572c0e5af51cf08a45bdbc17", null ],
+    [ "TestUpdateHitmanName", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a2bddecc07784cce5990ea83f1e2eabe9", null ],
+    [ "TestUpdateTargetLocation", "class_continental_1_1_logic_1_1_tests_1_1_test.html#aa5a4ac5d95442fee35b7e72cc0fc0661", null ],
+    [ "TestUpdateTargetName", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a8c590e1b8368c0523f89f4af615b5f39", null ],
+    [ "TestUpdateWishName", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a12b53c66555a9549d8001743cea24363", null ],
+    [ "TestUpdateWishPrice", "class_continental_1_1_logic_1_1_tests_1_1_test.html#a2ee6e08826d389553ec9319d9c33df6a", null ]
+];

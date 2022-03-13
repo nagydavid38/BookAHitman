@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ContinentalDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="Contract_ID" />
+          </Key>
+          <Property Name="Contract_ID" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Contract_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Hitman_ID" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Target_ID" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Extra_Wish_ID" Type="numeric" Precision="2" Scale="0" />
+        </EntityType>
+        <EntityType Name="ExtraWish">
+          <Key>
+            <PropertyRef Name="Wish_ID" />
+          </Key>
+          <Property Name="Wish_ID" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Wish" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Extra_Price" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hitman">
+          <Key>
+            <PropertyRef Name="Hitman_ID" />
+          </Key>
+          <Property Name="Hitman_ID" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Hitman_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Style" Type="varchar" MaxLength="20" />
+          <Property Name="Basic_Price" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Target">
+          <Key>
+            <PropertyRef Name="Target_ID" />
+          </Key>
+          <Property Name="Target_ID" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Target_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Target_Location" Type="varchar" MaxLength="20" />
+          <Property Name="Risk" Type="numeric" Precision="3" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="c_fk1">
+          <End Role="Hitman" Type="Self.Hitman" Multiplicity="1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hitman">
+              <PropertyRef Name="Hitman_ID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="Hitman_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="c_fk2">
+          <End Role="Target" Type="Self.Target" Multiplicity="1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Target">
+              <PropertyRef Name="Target_ID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="Target_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="c_fk3">
+          <End Role="ExtraWish" Type="Self.ExtraWish" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExtraWish">
+              <PropertyRef Name="Wish_ID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="Extra_Wish_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContinentalDataModelStoreContainer">
+          <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExtraWish" EntityType="Self.ExtraWish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hitman" EntityType="Self.Hitman" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Target" EntityType="Self.Target" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="c_fk1" Association="Self.c_fk1">
+            <End Role="Hitman" EntitySet="Hitman" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="c_fk2" Association="Self.c_fk2">
+            <End Role="Target" EntitySet="Target" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="c_fk3" Association="Self.c_fk3">
+            <End Role="ExtraWish" EntitySet="ExtraWish" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ContinentalDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="Contract_ID" />
+          </Key>
+          <Property Name="Contract_ID" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Contract_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hitman_ID" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Target_ID" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Extra_Wish_ID" Type="Decimal" Precision="2" Scale="0" />
+          <NavigationProperty Name="Hitman" Relationship="Self.c_fk1" FromRole="Contract" ToRole="Hitman" />
+          <NavigationProperty Name="Target" Relationship="Self.c_fk2" FromRole="Contract" ToRole="Target" />
+          <NavigationProperty Name="ExtraWish" Relationship="Self.c_fk3" FromRole="Contract" ToRole="ExtraWish" />
+        </EntityType>
+        <EntityType Name="ExtraWish">
+          <Key>
+            <PropertyRef Name="Wish_ID" />
+          </Key>
+          <Property Name="Wish_ID" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Wish" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Extra_Price" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Contract" Relationship="Self.c_fk3" FromRole="ExtraWish" ToRole="Contract" />
+        </EntityType>
+        <EntityType Name="Hitman">
+          <Key>
+            <PropertyRef Name="Hitman_ID" />
+          </Key>
+          <Property Name="Hitman_ID" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Hitman_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Style" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Basic_Price" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Contract" Relationship="Self.c_fk1" FromRole="Hitman" ToRole="Contract" />
+        </EntityType>
+        <EntityType Name="Target">
+          <Key>
+            <PropertyRef Name="Target_ID" />
+          </Key>
+          <Property Name="Target_ID" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Target_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Target_Location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Risk" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Contract" Relationship="Self.c_fk2" FromRole="Target" ToRole="Contract" />
+        </EntityType>
+        <Association Name="c_fk1">
+          <End Role="Hitman" Type="Self.Hitman" Multiplicity="1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hitman">
+              <PropertyRef Name="Hitman_ID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="Hitman_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="c_fk2">
+          <End Role="Target" Type="Self.Target" Multiplicity="1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Target">
+              <PropertyRef Name="Target_ID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="Target_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="c_fk3">
+          <End Role="ExtraWish" Type="Self.ExtraWish" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExtraWish">
+              <PropertyRef Name="Wish_ID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="Extra_Wish_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContinentalDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contract" EntityType="Self.Contract" />
+          <EntitySet Name="ExtraWish" EntityType="Self.ExtraWish" />
+          <EntitySet Name="Hitman" EntityType="Self.Hitman" />
+          <EntitySet Name="Target" EntityType="Self.Target" />
+          <AssociationSet Name="c_fk1" Association="Self.c_fk1">
+            <End Role="Hitman" EntitySet="Hitman" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="c_fk2" Association="Self.c_fk2">
+            <End Role="Target" EntitySet="Target" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="c_fk3" Association="Self.c_fk3">
+            <End Role="ExtraWish" EntitySet="ExtraWish" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ContinentalDataModelStoreContainer" CdmEntityContainer="ContinentalDataEntities">
+          <EntitySetMapping Name="Contract">
+            <EntityTypeMapping TypeName="ContinentalDataModel.Contract">
+              <MappingFragment StoreEntitySet="Contract">
+                <ScalarProperty Name="Contract_ID" ColumnName="Contract_ID" />
+                <ScalarProperty Name="Contract_Name" ColumnName="Contract_Name" />
+                <ScalarProperty Name="Hitman_ID" ColumnName="Hitman_ID" />
+                <ScalarProperty Name="Target_ID" ColumnName="Target_ID" />
+                <ScalarProperty Name="Extra_Wish_ID" ColumnName="Extra_Wish_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExtraWish">
+            <EntityTypeMapping TypeName="ContinentalDataModel.ExtraWish">
+              <MappingFragment StoreEntitySet="ExtraWish">
+                <ScalarProperty Name="Wish_ID" ColumnName="Wish_ID" />
+                <ScalarProperty Name="Wish" ColumnName="Wish" />
+                <ScalarProperty Name="Extra_Price" ColumnName="Extra_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hitman">
+            <EntityTypeMapping TypeName="ContinentalDataModel.Hitman">
+              <MappingFragment StoreEntitySet="Hitman">
+                <ScalarProperty Name="Hitman_ID" ColumnName="Hitman_ID" />
+                <ScalarProperty Name="Hitman_Name" ColumnName="Hitman_Name" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="Basic_Price" ColumnName="Basic_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Target">
+            <EntityTypeMapping TypeName="ContinentalDataModel.Target">
+              <MappingFragment StoreEntitySet="Target">
+                <ScalarProperty Name="Target_ID" ColumnName="Target_ID" />
+                <ScalarProperty Name="Target_Name" ColumnName="Target_Name" />
+                <ScalarProperty Name="Target_Location" ColumnName="Target_Location" />
+                <ScalarProperty Name="Risk" ColumnName="Risk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
