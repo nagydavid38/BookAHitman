@@ -84,25 +84,6 @@ namespace Continental.Logic
         /// <inheritdoc/>
         public void DeleteWish(int id) => this.wishrepo.Delete(id);
 
-        /// <inheritdoc/>
-        public void JavaWeb()
-        {
-            string addr = @"http://localhost:8080/Continental/ContinentalServlet?style=Close+Combat&price=1000";
-            try
-            {
-                using(var client = new WebClient())
-                {
-                    string text = client.DownloadString(addr);
-                    XDocument doc = XDocument.Parse(text);
-                    Console.WriteLine(doc);
-                    Console.ReadLine();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"An error occured while trying to receive data: {e.Message}\n");
-            }
-        }
 
         /// <inheritdoc/>
         public List<string> MostExpensive()

@@ -42,7 +42,7 @@ namespace OENIK_PROG3_2019_2_ME6A3S
                 Console.WriteLine("2.) Target CRUD methods");
                 Console.WriteLine("3.) Extra Wish CRUD methods");
                 Console.WriteLine("4.) Contract CRUD methods");
-                Console.WriteLine("6.) Other listings");
+                Console.WriteLine("5.) Other listings");
                 Console.WriteLine("q ) Quit");
                 input = Console.ReadLine();
                 if (input == "1")
@@ -65,7 +65,7 @@ namespace OENIK_PROG3_2019_2_ME6A3S
                     Console.Clear();
                     this.ContractMenu();
                 }
-                else if (input == "6")
+                else if (input == "5")
                 {
                     Console.Clear();
                     this.OtherMenu();
@@ -93,7 +93,6 @@ namespace OENIK_PROG3_2019_2_ME6A3S
                 Console.WriteLine("1.) All contracts");
                 Console.WriteLine("2.) Most expensive hitmen");
                 Console.WriteLine("3.) The Italian Job");
-                Console.WriteLine("4.) Java web");
                 Console.WriteLine("[q] Quit");
                 input = Console.ReadLine();
 
@@ -112,11 +111,6 @@ namespace OENIK_PROG3_2019_2_ME6A3S
                     this.TheItalianJob();
                     this.Done(string.Empty);
                 }
-                else if (input == "4")
-                {
-                    this.JavaWeb();
-                    this.Done(string.Empty);
-                }
                 else
                 {
                     if (input == "q")
@@ -130,12 +124,6 @@ namespace OENIK_PROG3_2019_2_ME6A3S
                 }
             }
             while (input != "q");
-        }
-
-        private void JavaWeb()
-        {
-            Console.WriteLine("Starting Java");
-            this.logic.JavaWeb();
         }
 
         private void AllContracts()

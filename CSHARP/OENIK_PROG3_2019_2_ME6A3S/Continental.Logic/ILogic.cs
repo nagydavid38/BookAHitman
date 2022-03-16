@@ -137,11 +137,5 @@ namespace Continental.Logic
         /// </summary>
         /// <returns>string.</returns>
         string TheItalianJob();
-
-        /// <summary>
-        /// Runs the java web call.
-        /// </summary>
-        void JavaWeb();
-        
     }
 }
